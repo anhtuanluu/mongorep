@@ -1,0 +1,7 @@
+###############################
+docker run -d -p 27017:27017 -v /home/sysadmin/data/db:/data/db --name mongo1 mongo mongod --replSet rsacommeassure
+docker run -d -p 28001:27017 -v /data/db:/data/db --name mongonew mongo mongod --replSet rsacommeassure
+
+cfg.members[0].host = "192.168.51.166:28001"
+
+rs.add("192.168.51.164:27017")
